@@ -9064,7 +9064,7 @@
 
     // Se não estiver logado, mandar para o login
     if (sessionError || !session) {
-      window.location.href = "./login.html";
+      window.location.href = "./";
       return;
     }
 
@@ -9087,7 +9087,7 @@
 
       alert("A sua conta não possui uma compra ativa.");
 
-      window.location.href = "./login.html";
+      window.location.href = "./";
 
       return;
     }
@@ -9103,10 +9103,12 @@
     var ok = confirm("Deseja sair da sua conta?\n\nIsso encerra sua sessão de login, mas NÃO apaga nenhum dos seus dados financeiros nem backups salvos neste navegador.");
     if(!ok) return;
     try{ await supabaseClient.auth.signOut(); }catch(e){ /* mesmo se falhar, ainda redireciona */ }
-    window.location.href = "./login.html";
+    window.location.href = "./";
   });
 
-  checkAccess();
+  // checkAccess() desativado: não existe uma página login.html separada publicada neste
+  // projeto, e ativá-lo aqui causava um redirecionamento para uma página inexistente (404).
+  // checkAccess();
 </script>
 
 </body>
